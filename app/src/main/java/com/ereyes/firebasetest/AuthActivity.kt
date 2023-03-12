@@ -72,7 +72,7 @@ class AuthActivity : AppCompatActivity() {
 
     private fun showHome(email: String, provider: ProviderType) {
         val intent = Intent(this, HomeActivity::class.java)
-        intent.putExtra(Constants.PROVIDER, provider)
+        intent.putExtra(Constants.PROVIDER, provider.toString())
         intent.putExtra(Constants.EMAIL, email)
         clearText()
         startActivity(intent)
