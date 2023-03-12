@@ -92,17 +92,19 @@ class AuthActivity : AppCompatActivity() {
         binding.tvMessage.text = Constants.EMPTY
     }
 
-    private fun validationFields(vararg textFields: TextInputLayout): Boolean{
+    private fun validationFields(vararg textFields: TextInputLayout): Boolean {
         var isValid = true
 
-        for (textField in textFields){
+        for (textField in textFields)
+        {
             if(textField.editText?.text.toString().trim().isEmpty())
             {
                 textField.error = "Required"
                 isValid = false
             }
+            else textField.error = null
         }
 
-        return isValid;
+        return isValid
     }
 }
