@@ -34,6 +34,17 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.9" />
 
+    <TextView
+        android:id="@+id/tvMessage"
+        tools:text="Mensaje"
+        android:textColor="@color/red"
+        android:textSize="16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/guideTop"
+        app:layout_constraintEnd_toEndOf="@id/guideEnd"
+        app:layout_constraintStart_toStartOf="@id/guideStart"/>
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilEmail"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -41,9 +52,10 @@
         android:layout_height="wrap_content"
         android:hint="@string/hint_email"
         app:endIconMode="clear_text"
+        android:layout_marginTop="@dimen/common_margin_default"
         app:layout_constraintEnd_toEndOf="@id/guideEnd"
         app:layout_constraintStart_toStartOf="@id/guideStart"
-        app:layout_constraintTop_toTopOf="@id/guideTop"
+        app:layout_constraintTop_toBottomOf="@id/tvMessage"
         app:startIconDrawable="@drawable/ic_email">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -69,7 +81,7 @@
         app:startIconDrawable="@drawable/ic_key">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tvPassword"
+            android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
