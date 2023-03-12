@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "457380546895",
+    "project_id": "fir-ereyes-firebase",
+    "storage_bucket": "fir-ereyes-firebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:457380546895:android:d3d2ec0aa241055afc9d3a",
+        "android_client_info": {
+          "package_name": "com.ereyes.firebasetest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "457380546895-oba7v805b7cdb9vq2lt7ah1t7t2a87ff.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvDVRfu9t1hRw2I4gmD3Z3JImfwdBAfFg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "457380546895-oba7v805b7cdb9vq2lt7ah1t7t2a87ff.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
