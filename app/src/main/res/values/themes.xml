@@ -13,4 +13,20 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="button_light_blue_600">
+        <item name="android:textSize">18sp</item>
+        <item name="android:padding">@dimen/common_margin_default</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:backgroundTint">@color/light_blue_600</item>
+        <item name="android:layout_marginTop">@dimen/common_margin_default</item>
+    </style>
+
+    <style name="button_navy_blue">
+        <item name="android:padding">@dimen/common_margin_default</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:backgroundTint">@color/navy_blue</item>
+        <item name="android:layout_marginTop">@dimen/common_margin_default</item>
+    </style>
 </resources>

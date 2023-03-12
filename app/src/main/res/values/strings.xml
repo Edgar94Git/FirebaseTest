@@ -3,4 +3,5 @@
     <string name="hint_email">Correo</string>
     <string name="hint_password">Contraseña</string>
     <string name="text_register">Registrar</string>
+    <string name="text_access">Acceder</string>
 </resources>
