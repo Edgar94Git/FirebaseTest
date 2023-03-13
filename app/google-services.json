@@ -14,7 +14,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "457380546895-oba7v805b7cdb9vq2lt7ah1t7t2a87ff.apps.googleusercontent.com",
+          "client_id": "457380546895-ucstb6d4133ep4j96akscj1p59pa3npu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ereyes.firebasetest",
+            "certificate_hash": "3d1c7aa3d2d4f1a03eff1b030a14f1b5c34e9224"
+          }
+        },
+        {
+          "client_id": "457380546895-cpclav70cmb4l6rc24c5i62hag5739md.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -27,7 +35,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "457380546895-oba7v805b7cdb9vq2lt7ah1t7t2a87ff.apps.googleusercontent.com",
+              "client_id": "457380546895-cpclav70cmb4l6rc24c5i62hag5739md.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

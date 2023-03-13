@@ -11,14 +11,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.25" />
+        app:layout_constraintGuide_percent="0.15" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideBottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.75" />
+        app:layout_constraintGuide_percent="0.85" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideStart"
@@ -36,23 +36,23 @@
 
     <TextView
         android:id="@+id/tvMessage"
-        tools:text="Mensaje"
-        android:textColor="@color/red"
-        android:textSize="16sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/guideTop"
+        android:textColor="@color/red"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@id/guideEnd"
-        app:layout_constraintStart_toStartOf="@id/guideStart"/>
+        app:layout_constraintStart_toStartOf="@id/guideStart"
+        app:layout_constraintTop_toTopOf="@id/guideTop"
+        tools:text="Mensaje" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilEmail"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_margin_default"
         android:hint="@string/hint_email"
         app:endIconMode="clear_text"
-        android:layout_marginTop="@dimen/common_margin_default"
         app:layout_constraintEnd_toEndOf="@id/guideEnd"
         app:layout_constraintStart_toStartOf="@id/guideStart"
         app:layout_constraintTop_toBottomOf="@id/tvMessage"
@@ -92,8 +92,9 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnRegister"
         style="@style/button_light_blue_600"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:padding="@dimen/common_margin_min"
         android:text="@string/text_register"
         app:layout_constraintEnd_toStartOf="@id/btnAccess"
         app:layout_constraintStart_toStartOf="@id/guideStart"
@@ -102,11 +103,42 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnAccess"
         style="@style/button_navy_blue"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/common_margin_min"
         android:text="@string/text_access"
+        android:padding="@dimen/common_margin_min"
         app:layout_constraintEnd_toEndOf="@id/guideEnd"
         app:layout_constraintStart_toEndOf="@id/btnRegister"
         app:layout_constraintTop_toBottomOf="@id/tilPassword" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSingInGoogle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_margin_default"
+        android:backgroundTint="@color/white"
+        android:drawableLeft="@drawable/logo_google"
+        android:gravity="center_vertical"
+        android:text="@string/text_google"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@id/guideEnd"
+        app:layout_constraintStart_toStartOf="@id/guideStart"
+        app:layout_constraintTop_toBottomOf="@id/btnRegister" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSingInFacebook"
+        app:layout_constraintTop_toBottomOf="@id/btnSingInGoogle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:text="@string/text_facebook"
+        android:drawableLeft="@drawable/facebook"
+        app:backgroundTint="@color/white"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@id/guideStart"
+        app:layout_constraintEnd_toEndOf="@id/guideEnd"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,4 +10,9 @@
     <color name="light_blue_600">#039BE5</color>
     <color name="navy_blue">#2C384A</color>
     <color name="red">#FF0000</color>
+    <color name="amber_700">#FFA000</color>
+    <color name="amber_400">#FFCA28</color>
+    <color name="orange_700">#F57C00</color>
+    <color name="deep_orange_300">#FF8A65</color>
+    <color name="blue_grey_50">#ECEFF1</color>
 </resources>

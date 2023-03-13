@@ -1,18 +1,51 @@
 package com.ereyes.firebasetest
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import com.ereyes.firebasetest.databinding.ActivityAuthBinding
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInApi
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthCredential
+import com.google.firebase.auth.GoogleAuthProvider
 
 class AuthActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAuthBinding
+
+    private val signInIntentLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
+            try {
+                val account = task.getResult(ApiException::class.java)
+                if(account != null)
+                {
+                    val credential = GoogleAuthProvider.getCredential(account.idToken, null)
+                    FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener {
+                        if(it.isSuccessful)
+                            showHome(account.email ?: "", ProviderType.GOOGLE)
+                        else
+                            binding.tvMessage.text = getString(R.string.message_error_register_user)
+                    }
+                }
+            } catch (e: ApiException) {
+                val message = "signInResult:failed code=" + e.statusCode
+                binding.tvMessage.text = message
+            }
+        } else {
+            binding.tvMessage.text = "signInResult: User canceled"
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +69,21 @@ class AuthActivity : AppCompatActivity() {
         binding.btnAccess.setOnClickListener {
             accesUse()
         }
+        binding.btnSingInGoogle.setOnClickListener {
+            sinInGoogle()
+        }
+    }
+
+    private fun sinInGoogle() {
+        val googleConf = GoogleSignInOptions
+            .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+
+        val googleClient = GoogleSignIn.getClient(this, googleConf)
+        googleClient.signOut()
+        signInIntentLauncher.launch(googleClient.signInIntent)
     }
 
     private fun accesUse() {
@@ -74,8 +122,8 @@ class AuthActivity : AppCompatActivity() {
         val intent = Intent(this, HomeActivity::class.java)
         intent.putExtra(Constants.PROVIDER, provider.toString())
         intent.putExtra(Constants.EMAIL, email)
-        clearText()
         startActivity(intent)
+        finish()
     }
 
     private fun showAlert(messageId: Int){

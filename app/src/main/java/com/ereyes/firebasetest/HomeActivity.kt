@@ -1,5 +1,6 @@
 package com.ereyes.firebasetest
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.ereyes.firebasetest.databinding.ActivityHomeBinding
@@ -25,6 +26,8 @@ class HomeActivity : AppCompatActivity() {
 
     private fun logout() {
         FirebaseAuth.getInstance().signOut()
+        val intent = Intent(this, AuthActivity::class.java)
+        startActivity(intent)
         finish()
     }
 

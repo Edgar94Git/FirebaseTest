@@ -7,5 +7,6 @@ package com.ereyes.firebasetest
  * All rights reserved 2023.
  ****/
 enum class ProviderType {
-    BASIC
+    BASIC,
+    GOOGLE
 }
