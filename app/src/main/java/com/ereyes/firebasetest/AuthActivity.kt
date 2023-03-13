@@ -69,12 +69,19 @@ class AuthActivity : AppCompatActivity() {
         binding.btnAccess.setOnClickListener {
             accesUse()
         }
-        binding.btnSingInGoogle.setOnClickListener {
-            sinInGoogle()
+        binding.btnSignInGoogle.setOnClickListener {
+            singInGoogle()
+        }
+        binding.btnSignInFacebook.setOnClickListener {
+            singInFacebook()
         }
     }
 
-    private fun sinInGoogle() {
+    private fun singInFacebook() {
+        TODO("Not yet implemented")
+    }
+
+    private fun singInGoogle() {
         val googleConf = GoogleSignInOptions
             .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
