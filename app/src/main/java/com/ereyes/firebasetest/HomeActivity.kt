@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.ereyes.firebasetest.databinding.ActivityHomeBinding
+import com.facebook.login.LoginManager
 import com.google.firebase.auth.FirebaseAuth
 
 class HomeActivity : AppCompatActivity() {
@@ -26,6 +27,12 @@ class HomeActivity : AppCompatActivity() {
 
     private fun logout() {
         FirebaseAuth.getInstance().signOut()
+
+        val provider = binding.tvProvider.text.toString().trim()
+
+        if(provider == ProviderType.FACEBOOK.name)
+            LoginManager.getInstance().logOut()
+
         val intent = Intent(this, AuthActivity::class.java)
         startActivity(intent)
         finish()

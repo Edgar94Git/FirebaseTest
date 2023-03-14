@@ -8,5 +8,6 @@ package com.ereyes.firebasetest
  ****/
 enum class ProviderType {
     BASIC,
-    GOOGLE
+    GOOGLE,
+    FACEBOOK
 }
