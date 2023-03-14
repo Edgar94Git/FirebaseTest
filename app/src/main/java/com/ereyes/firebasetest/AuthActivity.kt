@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import com.ereyes.firebasetest.databinding.ActivityAuthBinding
@@ -14,17 +13,14 @@ import com.facebook.FacebookException
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInApi
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.analytics.FirebaseAnalytics
-import com.google.firebase.auth.FacebookAuthCredential
 import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.GoogleAuthCredential
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.messaging.FirebaseMessaging
 
 class AuthActivity : AppCompatActivity() {
 
@@ -60,13 +56,25 @@ class AuthActivity : AppCompatActivity() {
         setContentView(binding.root)
         setUpLogEvent()
         setUpButton()
+        notification()
+    }
+
+    private fun notification() {
+        FirebaseMessaging.getInstance().token.addOnCompleteListener {
+            if(it.isSuccessful){
+                val token = it.result
+                println("El token es $token")
+            }
+        }
+
+        FirebaseMessaging.getInstance().subscribeToTopic("Prueba")
     }
 
     private fun setUpLogEvent(){
         val analytics = FirebaseAnalytics.getInstance(this)
         val bundle = Bundle()
         bundle.putString(Constants.MESSAGE, "Integracion de firebase completa")
-        analytics.logEvent(Constants.INIT_SCREEN,bundle)
+        analytics.logEvent("Error400",bundle)
     }
 
     private fun setUpButton(){
